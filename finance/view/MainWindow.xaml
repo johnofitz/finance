@@ -1,0 +1,140 @@
+﻿<Window x:Class="finance.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:finance" 
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+        mc:Ignorable="d"
+        Title="InvoiceTrack" 
+        Height="600" Width="920"
+        DataContext="">
+
+    <Border
+            Background="#272537">
+        <Grid>
+
+
+            <TextBlock Text="Cupprint Accounts"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="24"
+                       TextAlignment="Center" Margin="0,49,0,0"/>
+
+
+
+
+            <ComboBox HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  Width="200"
+                  Margin="0,124,0,0"
+                  SelectedItem="{Binding SelectedOption}" 
+                  Text="Select Invoice" 
+                  BorderBrush="#FF109734" 
+                  Height="30">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFBB1C1C" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <TextBlock IsEnabled="False" 
+                       FontWeight="Bold" 
+                       FontStyle="Italic" 
+                       Text="Invoice Type"/>
+                <ComboBoxItem Content="UPS"  
+                          Background="AliceBlue"/>
+                <ComboBoxItem Content="STL"  
+                          Background="AliceBlue"/>
+                <ComboBoxItem Content="DB"  
+                          Background="AliceBlue"/>
+            </ComboBox>
+
+
+            <TextBox x:Name="UploadPathTextBox"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Top"
+             Width="200"
+             Height="30"
+             Margin="0,189,0,0"
+             IsReadOnly="True" 
+             Text="{Binding FilePath}" 
+             BorderThickness="1"
+             BorderBrush="#FF109734"
+             Padding="5">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border CornerRadius="15" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                                        <ScrollViewer x:Name="PART_ContentHost"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+
+            <Button Content="Upload Invoice"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Width="150"
+            Height="30"
+            Foreground="White"
+            FontSize="14"
+            FontWeight="Bold"
+            Margin="0,254,0,0" 
+            Command="{Binding GetFilePathCommand}"
+            Background="#FF4071A2"
+         
+            BorderThickness="2"
+            Padding="5">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="15" BorderThickness="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Content="Submit"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Width="100"
+            Height="30"
+            Foreground="White"
+            FontSize="14"
+            FontWeight="Bold"
+            Margin="0,329,0,0"
+            Command="{Binding SubmitFileCommand}"
+            Background="#FF0AAA3A"
+            BorderThickness="2"
+            Padding="5">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="15" BorderThickness="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
